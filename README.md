@@ -21,6 +21,7 @@ Fig S3. Identification of LIN28A Binding Sites, related to Fig 2.
 - 이 결과가 연구 상 필요했던 이유, 그리고 이 결과를 통한 다음 과정 소개하는 방식으로 발표 진행
 
 # 스토리라인
+해당 내용을 토대로 분석 및 최종 발표 진행
 
 ## 서론
 - CLIP-seq로 LIN28A-RNA complex를 형성, LIN28A의 binding motif에 대한 특징을 알아낼 수 있었음.
@@ -53,8 +54,11 @@ Fig S3. Identification of LIN28A Binding Sites, related to Fig 2.
 3. Fig 2C 재현
 - (Q) 주변 hairpin을 구성하는 flanking hexamer 같음. 맞는지?
 
+## 분석에 필요한 파일
+(Q) 리스트 뽑아보고, 맞는지 질문 드리기.
+
 ## 결론
-분석으로 도출한 '결과의 문맥'을 여기에 적으면 됨.
+(분석으로 도출한 '결과의 문맥'을 여기에 적으면 됨.)
 
 ## 이후 분석
 - 이전에 가지고 있던, 'most frequently observed hexamer' 패턴과 다른 경향을 보인 것을 토대로 함.
