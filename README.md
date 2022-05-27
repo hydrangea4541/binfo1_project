@@ -33,7 +33,7 @@ Fig S3. Identification of LIN28A Binding Sites, related to Fig 2.
 - 이전 연구(Heo et al., 2009)에서 let-7 precursor의 terminal loop에서 GGAG motif가 zinc finger domain(CCHC)의 binding center임을 밝힘
 - CLIP tag에서 GGAG motif에 자주 변이가 있었음을 확인: CLIP-seq의 특징으로 인해! 특히 motif의 첫 G가 자주 변이함. 
 - non-miRNA transcripts에 대한 mapping tag가 많음: LIN28A - let7g 이외의 interaction 기대 가능
-- (Q) 기존 let7g에서만 발견했던 패턴을 transcript에서도 발견한 것? + 이 주변의 sequence 패턴을 확인하여 transcriptome에서 LIN28A가 어떻게 작용하는지 확인하는 것?
+- 기존 let7g에서만 발견했던 패턴을 transcript에서도 발견한 것 + 이 주변의 sequence 패턴을 확인하여 transcriptome에서 LIN28A가 어떻게 작용하는지 확인하는 것
 
 
 ## 목표 1(minimum)
@@ -44,6 +44,41 @@ Fig S3. Identification of LIN28A Binding Sites, related to Fig 2.
 2. 결과의 문맥 파악
 (Q) '문맥'이라 함은 어떤 패턴의 sequence가 가장 많이 발견되는지에 대한 질문인가?
 
+(5/27) 
+
+교수님 피드백 1: 목표의 구체화가 필요. Weblogo 제작을 위해서 다음과 같은 과정이 필요함.
+- LIN28A 뭐... 
+- binding motif는 많음. 약 1000~10000개의 motif를 추출하여 만드는 것이 weblogo. 따라서 weblogo는 특정 한 chromosome이 아닌 여러 개의 chromosome 상의 영역을 대상으로 함. 
+- antibody는 하나만 하는 게 좋음. 
+  * 다른 antibody를 한다고 크게 significant한 변화가 있진 않음.(모두 목표가 같으니깐...)
+  * 있는 데이터로 진행하기 위함. 다른 antibody를 가져오면 별도의 전처리 과정이 필요함. (추가 목표에 해당할 듯)
+### 프로젝트 위해 현재 파악한 중요한 내용!
+- Genome sequence, primary assembly (GRCm39): https://www.gencodegenes.org/mouse/release_M29.html
+  * 여기서 쥐의 전체 genome에 대한 reference data 가질 수 있음. 다운받는 데 2시간 걸림 ㅠ 다운 눌러놓자,,,
+  * 전체로 돌리기엔 시간이 오래 걸리니 특정 chromosome 별로 진행해 보자. 규모 작은 22번 부터 진행해 보기.
+- Project 3에서 구한 shannon entropy 처리 필요. 어디서 많이 나오는지 확인하기 -> 이걸 fasta로 받아와야 함. 
+- getfasta: https://bedtools.readthedocs.io/en/latest/content/tools/getfasta.html shannon entropy 위주의 sequence 받을 때 필요. 
+- 이후 weblogo 작업. 여기는 쉬움. 
+
+교수님 피드백 2:
+
+1. pileup 파일에서 bed 파일 만들 때:
+
+chromStart(=pos) + len(basereads) = chromEnd
+
+or 
+
+chromStart(=pos) + 1 = chromEnd
+
+"zero-base"
+
+첫 칸만 포함, 마지막 포함 x
+
+mpileup & bam 파일 간 밀림 현상 해결 필요. (CoLab_TermProj_2022_3(mirlet7f-1).ipynb 마지막 그림 참고)
+
+(+) 이 GGAG motif는 reverse strand 에서 발생하는 것 염두하기 .
+
+
 ## 목표 2(Extended)
 1. Fig 2A 재현
 - 3가지 biological replicate에 대해 진행한 Fig S3C와 달리, 모든 replicate를 통합하여 만든 WebLogo image로 추정됨.
@@ -53,6 +88,9 @@ Fig S3. Identification of LIN28A Binding Sites, related to Fig 2.
   (Q) 이것이 Fig 2A, S3C와 어떻게 비교된 것인지. 구체적으로 2A와 '뭘' 비교하고 다음으로 넘어간 것인가? 'most frequently observed hexamer'란 어디서 관찰된 것을 지칭하는가?
 3. Fig 2C 재현
 - (Q) 주변 hairpin을 구성하는 flanking hexamer 같음. 맞는지?
+
+(5/27) 우선 목표1을 구체화하는 것이 최우선 목표.
+4. 다른 antibody의 bam 파일로의 전처리
 
 ## 분석에 필요한 파일
 (Q) 리스트 뽑아보고, 맞는지 질문 드리기.
